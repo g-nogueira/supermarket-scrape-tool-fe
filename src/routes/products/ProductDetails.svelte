@@ -1,6 +1,13 @@
 <!-- ProductDetails.svelte -->
 <script lang="ts">
-	export let product: { id: number; name: string; price: number };
+	export let product: {
+	  id: number;
+	  name: string;
+	  price: number;
+	  priceUnit: string;
+	  source: string;
+	  imageUrl: string;
+	};
 </script>
 
 <div class="product-details">
