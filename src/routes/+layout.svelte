@@ -11,7 +11,7 @@
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p>Developed by Gustavo Nogueira @ <a href="https://github.com/g-nogueira/supermarket-scrape-tool-fe">github.com/g-nogueira</a>.</p>
 	</footer>
 </div>
 
