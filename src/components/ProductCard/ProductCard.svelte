@@ -6,11 +6,11 @@
 </script>
 
 <Card padding="none" class="flex-none">
-	<a href="/product/">
+	<a href="/product/{product.id}">
 		<img class="rounded-t-lg p-8" src={product.images[0]} alt="product 1" />
 	</a>
 	<div class="px-5 pb-5">
-		<a href="/">
+		<a href="/product/{product.id}">
 			<h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
 				{product.name}
 			</h5>
