@@ -3,42 +3,10 @@ import { pipe } from "fp-ts/function";
 import * as Array from "fp-ts/Array";
 import type { PriceHistoryDto, ProductDto } from "../clients/ProductDto";
 import { sequenceT } from "fp-ts/Apply";
+import { sourceName, type SourceName } from "./SourceName";
 
 export type PriceRange = [number, number];
 
-export enum SourceName {
-    PingoDoce,
-    Continente,
-}
-
-export const sourceName = {
-    ofString: (sourceNameString: string): Either.Either<string, SourceName> => {
-        switch (sourceNameString) {
-            case "pingodoce":
-                return Either.right(SourceName.PingoDoce);
-            case "continente":
-                return Either.right(SourceName.Continente);
-            default:
-                return Either.left(`Unexpected SourceName. Expected "pingodoce" or "continente". Got ${sourceNameString}.`);
-        }
-    },
-    toString: (sourceName: SourceName) => {
-        switch (sourceName) {
-            case SourceName.PingoDoce:
-                return "Pingo Doce";
-            case SourceName.Continente:
-                return "Continente";
-        }
-    },
-    toColor: (sourceName: SourceName) => {
-        switch (sourceName) {
-            case SourceName.PingoDoce:
-                return "green";
-            case SourceName.Continente:
-                return "red";
-        }
-    }
-};
 
 export type ProductListItem = {
     id: string;
