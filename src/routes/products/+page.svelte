@@ -1,14 +1,13 @@
 <script lang="ts">
-	import ProductCard from '../../components/ProductCard/ProductCard.svelte';
-	import SearchBar from '../../components/SearchBar/SearchBar.svelte';
-	import { getProductsPaginated } from '../../clients/ProductsClient';
 	import { onMount } from 'svelte';
-	import type { ProductListItem } from '../../types/Product';
-	import { productListItem } from '../../types/Product';
 	import { pipe } from 'fp-ts/lib/function';
 	import * as Either from "fp-ts/lib/Either";
-	import type { ProductDto } from '../../clients/ProductDto';
 	import { sequence } from 'fp-ts/lib/Array';
+	import { productListItem, type ProductListItem } from '../../types/ProductListItem';
+	import { getProductsPaginated } from '../../clients/ProductsClient';
+	import type { ProductDto } from '../../clients/ProductDto';
+	import SearchBar from '../../components/SearchBar/SearchBar.svelte';
+	import ProductCard from '../../components/ProductCard/ProductCard.svelte';
 
 	let products: Either.Either<string, ProductListItem[]> = Either.left("Loading...");
 
