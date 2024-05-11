@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Badge, Button, Card, Rating } from 'flowbite-svelte';
-	import { sourceName, type ProductListItem } from '../../types/Product';
+	import { type ProductListItem } from '../../types/ProductListItem';
+	import { sourceName } from '../../types/SourceName';
 
 	export let product: ProductListItem;
 </script>
