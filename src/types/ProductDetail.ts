@@ -8,6 +8,8 @@ import { sourceName, type SourceName } from "./SourceName";
 export enum ProductPriceUnit {
     Kg,
     Unit,
+    Liter,
+    Rolls
 }
 
 const productPriceUnit = {
@@ -16,9 +18,14 @@ const productPriceUnit = {
             case "kg":
                 return Either.right(ProductPriceUnit.Kg);
             case "unit":
+            case "un":
                 return Either.right(ProductPriceUnit.Unit);
+            case "ltr":
+                return Either.right(ProductPriceUnit.Liter);
+            case "ro":
+                return Either.right(ProductPriceUnit.Rolls);
             default:
-                return Either.left(`Unexpected PriceUnit. Expected "kg" or "unit". Got ${priceUnitString}.`);
+                return Either.left(`Unexpected PriceUnit. Expected "kg", "unit", "ltr", "ro". Got ${priceUnitString}.`);
         }
     },
     toString: (priceUnit: ProductPriceUnit) => {
