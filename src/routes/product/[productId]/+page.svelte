@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ProductDetailImage from '../../../components/ProductDetailImage/ProductDetailImage.svelte';
+	import ProductDetailThumbnail from '../../../components/ProductDetailThumbnail/ProductDetailThumbnail.svelte';
 	import { getProductById, getProductsPaginated } from '../../../clients/ProductsClient';
 	import { onMount } from 'svelte';
 	import { pipe } from 'fp-ts/lib/function';
@@ -16,7 +16,6 @@
 
 	onMount(async () => {
 		let productResult = await getProductById(productId);
-
 		product = pipe(productResult, Either.flatMap(productDetail.ofDto));
 
 		productImages = pipe(
@@ -38,7 +37,7 @@
 			{#if Either.isLeft(productImages)}
 				<p class="text-red-500">{productImages.left}</p>
 			{:else}
-				<ProductDetailImage images={productImages.right} productName={product.right.name} />
+				<ProductDetailThumbnail images={productImages.right} productName={product.right.name} />
 			{/if}
 		</section>
 		<section class="w-full">

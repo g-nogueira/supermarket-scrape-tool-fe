@@ -5,9 +5,9 @@
 </script>
 
 <div class="app">
-	<Navbar />
+	<Navbar classStr="mb-4"/>
 
-	<main>
+	<main class="mx-4 flex w-full justify-center">
 		<slot />
 	</main>
 
