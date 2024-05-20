@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
 	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, Button, Input, } from 'flowbite-svelte';
+
+	export let classStr: string;
 </script>
 
-<Navbar>
+<Navbar class={classStr}>
 	<NavBrand href="/">
 		<img src="/images/flowbite-svelte-icon-logo.svg" class="me-3 h-6 sm:h-9" alt="Flowbite Logo" />
 		<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
@@ -26,6 +28,6 @@
 		<NavHamburger />
 	</div>
 	<NavUl>
-		<NavLi href="/products" active={true}>Home</NavLi>
+		<NavLi href="/products" active={true}>Products</NavLi>
 	</NavUl>
 </Navbar>
