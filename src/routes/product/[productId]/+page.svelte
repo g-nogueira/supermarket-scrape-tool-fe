@@ -8,6 +8,7 @@
 	import { page } from '$app/stores';
 	import { productDetail, type ProductDetail } from '../../../types/ProductDetail';
 	import ProductSourcesTable from '../../../components/ProductSourcesTable/ProductSourcesTable.svelte';
+	import PriceHistoryChart from '../../../components/PriceHistoryChart/PriceHistoryChart.svelte';
 
 	let product: Either.Either<string, ProductDetail> = Either.left('Loading...');
 	let productImages: Either.Either<string, string[]> = Either.left('Loading...');
@@ -27,23 +28,28 @@
 </script>
 
 <svelte:head>
-	<title>About</title>
+	<title>Product Detail</title>
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-{#if Either.isRight(product)}
-	<section class="inline-flex flex-nowrap justify-between">
-		<section>
-			{#if Either.isLeft(productImages)}
-				<p class="text-red-500">{productImages.left}</p>
-			{:else}
-				<ProductDetailThumbnail images={productImages.right} productName={product.right.name} />
-			{/if}
+<section class="flex flex-col justify-center gap-4">
+	{#if Either.isLeft(product)}
+		<p class="text-red-500">{product.left}</p>
+	{:else}
+		<section class="inline-flex flex-nowrap justify-between">
+			<section>
+				{#if Either.isLeft(productImages)}
+					<p class="text-red-500">{productImages.left}</p>
+				{:else}
+					<ProductDetailThumbnail images={productImages.right} productName={product.right.name} />
+				{/if}
+			</section>
+			<section class="w-full">
+				<ProductSourcesTable product={product.right}></ProductSourcesTable>
+			</section>
 		</section>
 		<section class="w-full">
-			<ProductSourcesTable product={product.right}></ProductSourcesTable>
+			<PriceHistoryChart priceHistory={product.right.priceHistory}></PriceHistoryChart>
 		</section>
-	</section>
-{:else}
-	<p class="text-red-500">{product.left}</p>
-{/if}
+	{/if}
+</section>
